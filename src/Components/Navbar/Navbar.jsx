@@ -10,6 +10,18 @@ import {CgMenuGridO} from 'react-icons/cg'
 
 import logo from '../../assets/logo.png'
 const Navbar = () => {
+
+  //Remove the NavBar in the small width screens=>
+   const [active, setActive] = useState('showNavBar');
+
+  const showNavBar = () => {
+    setActive('navBarMenu showNavBar');
+  };
+
+  const removeNavBar = () => {
+    setActive('showNavBar'); // Set it to 'showNavBar' to hide the navbar
+  };
+
   return (
     <div className='navBar flex'>
       <div className="navBarOne flex">
@@ -31,16 +43,16 @@ const Navbar = () => {
           <img src={logo} className='logo' />
         </div>
 
-        <div className="navBarMenu">
+        <div className={active}>
           <ul className='menu flex'>
-            <li className='listItem'>Home</li>
-            <li className='listItem'>About</li>
-            <li className='listItem'>Offers</li>
-            <li className='listItem'>Seats</li>
-            <li className='listItem'>Destinations</li>
+            <li  onClick={removeNavBar} className='listItem'>Home</li>
+            <li  onClick={removeNavBar} className='listItem'>About</li>
+            <li  onClick={removeNavBar} className='listItem'>Offers</li>
+            <li  onClick={removeNavBar} className='listItem'>Seats</li>
+            <li  onClick={removeNavBar} className='listItem'>Destinations</li>
           </ul>
 
-          <button className='btn flex btnOne'>
+          <button onClick={removeNavBar} className='btn flex btnOne'>
             Contact
           </button>
 
@@ -50,7 +62,7 @@ const Navbar = () => {
             Contact
           </button>
 
-          <div className="toggleIcon">
+          <div onClick={showNavBar} className="toggleIcon">
             <CgMenuGridO className='icon' />
           </div>
 
